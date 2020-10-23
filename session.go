@@ -128,6 +128,7 @@ func (s *session) start(localMasterKey, localMasterSalt, remoteMasterKey, remote
 		for {
 			var i int
 			i, err = s.nextConn.Read(b)
+			s.log.Errorf("IP address %v, err %v", s.nextConn.RemoteAddr().String(), err)
 			if err != nil {
 				if err != io.EOF {
 					s.log.Error(err.Error())
